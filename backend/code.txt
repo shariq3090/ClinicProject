@@ -1,0 +1,93 @@
+@app.route("/doctors/<int:doctor_id>/available-slots")
+def available_slots(doctor_id):      
+    date = request.args.get("date")
+    slots = get_available_slots(doctor_id, date)
+    return jsonify(slots)
+
+def get_available_slots(doctor_id, selected_date):
+    con = sqlite3.connect(DB_PATH)
+    con.row_factory = sqlite3.Row
+    cur = con.cursor()
+    
+    weekday = datetime.strptime(selected_date, "%Y-%m-%d").strftime("%A")
+    #print("inside get_available_slots", doctor_id, weekday)
+    schedule = cur.execute("""
+        SELECT visit_start_time, visit_end_time, slot_duration_minutes
+        FROM doctors_operational
+        WHERE doctor_id = ?
+        AND visit_days LIKE ?
+    """, (doctor_id, f"%{weekday}%")).fetchone()
+    
+    if not schedule:
+        return []
+
+    all_slots = generate_time_slots(
+        schedule["visit_start_time"],
+        schedule["visit_end_time"],
+        schedule["slot_duration_minutes"]
+    )
+    
+    booked = cur.execute("""
+        SELECT visit_start_time, visit_end_time
+        FROM appointments
+        WHERE doctor_id = ?
+        AND appointment_date = ?
+    """, (doctor_id, selected_date)).fetchall()
+
+    booked_slots = {(b["visit_start_time"], b["visit_end_time"]) for b in booked}
+
+    available_slots = [
+        slot for slot in all_slots if slot not in booked_slots
+    ]
+
+    con.close()
+    return available_slots
+
+def generate_time_slots(start_time, end_time, duration):
+    slots = []
+    current = datetime.strptime(start_time, "%H:%M")
+    end = datetime.strptime(end_time, "%H:%M")
+
+    while current + timedelta(minutes=duration) <= end:
+        slot_start = current.strftime("%H:%M")
+        slot_end = (current + timedelta(minutes=duration)).strftime("%H:%M")
+        slots.append((slot_start, slot_end))
+        current += timedelta(minutes=duration)
+
+    return slots
+
+
+def save_appointment(doctor_id):
+    name = request.form["patient_name"]
+    phone = request.form["patient_phone"]
+    email = request.form.get("patient_email")
+    date = request.form["appointment_date"]
+    slot = request.form["slot"]
+
+    visit_start_time, visit_end_time = slot.split("|")
+
+    con = sqlite3.connect(DB_PATH)
+    cur = con.cursor()
+
+    cur.execute("""
+        INSERT INTO appointments (
+            doctor_id,
+            patient_name,
+            patient_phone,
+            patient_email,
+            appointment_date,
+            visit_start_time,
+            visit_end_time
+        ) VALUES (?, ?, ?, ?, ?, ?, ?)
+    """, (
+        doctor_id,
+        name,
+        phone,
+        email,
+        date,
+        visit_start_time,
+        visit_end_time
+    ))
+
+    con.commit()
+    con.close()
