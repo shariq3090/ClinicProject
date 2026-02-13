@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!--<body class="doctor-listing-page">-->
+    <!--<main class="main">-->
+        <!-- Page Title -->
+    <!--<div class="page-title" data-aos="fade">-->
+    <div class="page-title">
+        <div class="heading container">
+            <div class="container">
+                <div class="row d-flex justify-content-center text-center">
+                    <div class="col-lg-8">
+                        <h1>{{ doctor.full_name }} (Profile)</h1>
+                        <!--<h2 class="mb-0">{{ doctor.full_name }}</h2>-->
+                    </div>
+                </div>
+            </div>
+      </div>      
+    </div><!-- End Page Title -->
+    <div class="row gy-4">
+
+        <div class="col-md-4">
+            <label for="doctor-name">Doctor Name</label>
+            <input type="doctor-name" class="form-control readonly-input-box" name="doctor-name" readonly value="{{ doctor.full_name }}">
+        </div>
+
+        <div class="col-md-4">
+            <label for="gender">Gender</label>
+            <input type="gender" class="form-control readonly-input-box" name="gender" readonly value="{{ doctor.gender }}">
+        </div>
+
+        <div class="col-md-4">
+            <label for="specialization">Specialization</label>
+            <input type="specialization" class="form-control readonly-input-box" name="specialization" readonly value="{{ doctor.specialization }}">
+        </div>
+        
+        <div class="col-md-4">
+            <label for="qualification">Qualification</label>
+            <input type="qualification" class="form-control readonly-input-box" name="qualification" readonly value="{{ doctor.qualification }}">
+        </div>
+        
+        <div class="col-md-4">
+            <label for="experience">Experience (Years)</label>
+            <input type="experience" class="form-control readonly-input-box" name="experience" readonly value="{{ doctor.experience_years }}">
+        </div>        
+        <div class="col-md-4">
+            <label for="consultation-fee">Consultation Fee</label>
+            <input type="consultation-fee" class="form-control readonly-input-box" name="consultation-fee" readonly value="{{ doctor.consultation_fee }}">
+        </div>        
+    </div>
+    
+    <h3 class="mt-4">Visiting Schedule</h3>
+    <table class="table table-striped table-dark">
+        <thead class="table-header-cus">
+            <tr>
+                <td>Visit Days</td>
+                <td>Start Time</td>
+                <td>End Time</td>
+                <td>Room No</td>                
+            </tr>
+        </thead>
+        <tbody>
+            {% for s in schedules %}
+            <tr>
+                <td><p>{{ s.visit_days }}</p></td>
+                <td><p>{{ s.visit_start_time }}</p></td>
+                <td><p>{{ s.visit_end_time }}</p></td>
+                <td><p>{{ s.room_no }}</p></td>                
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="5" class="text-center">No schedule available</td>
+            </tr>
+            {% endfor %}
+        </tbody>        
+    </table>
+    <a href="{{ url_for('book_appointment', doctor_id=doctor.doctor_id) }}" class="btn btn-success mt-3 anchor"> Book Appointment</a>
+    <a href="{{ url_for('doctor') }}" class="btn btn-secondary mt-3 anchor">Cancel</a>
+
+    <!--<section id="contact" class="contact section">-->
+        <!--<table class="table table-striped table-dark">
+            <tr>
+                <thead class="table-header-cus">Doctor ID</th>
+                <td>{{ doctor.doctor_id }}</td>
+            </tr>
+            <tr>
+                <th>Gender</th>
+                <td>{{ doctor.gender }}</td>
+            </tr>
+            <tr>
+                <th>Specialization</th>
+                <td>{{ doctor.specialization }}</td>
+            </tr>
+            <tr>
+                <th>Qualification</th>
+                <td>{{ doctor.qualification }}</td>
+            </tr>
+            <tr>
+                <th>Experience</th>
+                <td>{{ doctor.experience_years }} years</td>
+            </tr>
+            <tr>
+                <th>Consultation Fee</th>
+                <td>{{ doctor.consultation_fee }}</td>
+            </tr>
+            <tr>
+                <th>Visit Days</th>
+                <td>{{ doctor.visit_days }}</td>
+            </tr>
+            <tr>
+                <th>Visit Time</th>
+                <td>
+                  {{ doctor.visit_start_time }} – {{ doctor.visit_end_time }}
+                </td>
+            </tr>
+        </table>-->
+
+    <!--</section>-->
+    <!--</main>-->
+<!--</body>-->
+{% endblock %}

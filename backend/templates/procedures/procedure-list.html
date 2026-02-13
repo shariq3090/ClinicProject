@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <!-- Page Title -->
+    <!--<div class="page-title" data-aos="fade">-->
+    <div class="page-title">
+        <div class="heading">
+            <div class="container">
+                <div class="row d-flex justify-content-center text-center">
+                    <div class="col-lg-8">
+                        <h1>List of Procedures</h1>
+                        <p class="mb-0">Grace Clinic provides range of Procedures in the following domain.</p>
+                        <p class="mb-0">Click on Procedure for acquiring a service.</p>
+                    </div>
+                </div>
+            </div>
+      </div>      
+    </div><!-- End Page Title -->
+    <!--<section id="contact" class="contact section">-->
+        <table class="table table-striped table-dark">
+            <thead class="table-header-cus">
+                <tr>
+                    <td>ID</td>
+                    <td>Name</td>
+                    <td>Description</td>
+                    <td>Company</td>
+                    <td>Oral / Injectable</td> 
+                    <!--<td>Experience (Years)</td>-->
+                    <!--<td>Action</td> -->
+                </tr>
+            </thead>
+            <tbody>
+                {% for vaccine in vaccines %}
+                <tr>                    
+                    <td><p>{{ vaccine.vaccine_id }}</p></td>
+                    <td><p>{{ vaccine.vaccine_name }}</p></td>
+                    <td><p>{{ vaccine.vaccine_description }}</p></td>
+                    <td><p>{{ vaccine.company }}</p></td>
+                    <td><p>{{ vaccine.oral_injectable }}</p></td>
+                    <!--<td><a href="appointment.html" class="btn-get-started">Book an appointment<br></a></td>-->
+                </tr>                
+                {% endfor %}
+            </tbody>
+        </table>
+        <p style="color:red;">
+            Services count: {{ vaccines | length }}
+        </p>
+    <!--</section>-->
+    <!--</main>-->
+<!--</body>-->
+{% endblock %}

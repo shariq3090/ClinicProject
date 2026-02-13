@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Available Lab Tests</h2>
+
+{% for test in tests %}
+<div class="card">
+    <h3>{{ test.test_name }}</h3>
+    <p>{{ test.description }}</p>
+</div>
+{% endfor %}
+
+{% endblock %}

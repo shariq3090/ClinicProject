@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Patients Visits</h2>
+
+{% for visit in visits %}
+<div class="card">
+    <h3>{{ visit.patint-id }}</h3>
+    <p>{{ visit.visit_date }}</p>
+    <p>{{ visit.doctor_name }}</p>
+    <p>{{ visit.diagnosis, prescription }}</p>
+    <p>{{ visit.prescription }}</p>
+</div>
+{% endfor %}
+
+{% endblock %}

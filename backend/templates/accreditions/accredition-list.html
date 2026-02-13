@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <!-- Page Title -->
+    <!--<div class="page-title" data-aos="fade">-->
+    <div class="page-title">
+        <div class="heading">
+            <div class="container">
+                <div class="row d-flex justify-content-center text-center">
+                    <div class="col-lg-8">
+                        <h1>List of Accreditions</h1>
+                        <p class="mb-0">Grace Clinic regularly strives on providing best medical care of its services. This has been recognized internationally by various elite awarding bodies</p>
+                        <p class="mb-0">Click on accredition for details.</p>
+                    </div>
+                </div>
+            </div>
+      </div>      
+    </div><!-- End Page Title -->
+    <!--<section id="contact" class="contact section">-->
+        <table class="table table-striped table-dark">
+            <thead class="table-header-cus">
+                <tr>
+                    <td>ID</td>
+                    <td>Name</td>
+                    <td>Description</td>
+                    <td>Awarding Body</td>
+                    <td>Awarded Year</td> 
+                    <!--<td>Experience (Years)</td>-->
+                    <!--<td>Action</td> -->
+                </tr>
+            </thead>
+            <tbody>
+                {% for accredition in accreditions %}
+                <tr>                    
+                    <td><p>{{ accredition.accredition_id }}</p></td>
+                    <td><p>{{ accredition.accredition_name }}</p></td>
+                    <td><p>{{ accredition.accredition_description }}</p></td>
+                    <td><p>{{ accredition.awarding_body }}</p></td>
+                    <td><p>{{ accredition.awarded_year }}</p></td>
+                    <!--<td><a href="appointment.html" class="btn-get-started">Book an appointment<br></a></td>-->
+                </tr>                
+                {% endfor %}
+            </tbody>
+        </table>
+        <p style="color:red;">
+            Awards count: {{ accreditions | length }}
+        </p>
+    <!--</section>-->
+    <!--</main>-->
+<!--</body>-->
+{% endblock %}

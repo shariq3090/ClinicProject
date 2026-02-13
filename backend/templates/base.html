@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title class="header sticky-top">Grace Clinic</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+    
+
+    <link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+
+    <!-- Favicons -->    
+    <link href="{{ url_for('static', filename='img/favicon.png') }}" rel="icon">
+    <link href="{{ url_for('static', filename='img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Cardo:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='vendor/aos/aos.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+
+    <!-- Main CSS File -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">  
+
+</head>
+<body class="index-page">
+      <!-- Preloader -->
+  <div id="preloader">
+    <div class="line"></div>
+  </div> 
+    <header id="header" class="header d-flex align-items-center sticky-top">
+    <div class="container-fluid position-relative d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="assets/img/logo.png" alt=""> -->
+        <i class="bi bi-camera"></i>
+        <h1 class="sitename">Grace Clinic</h1>
+      </a>
+
+        <nav id="navmenu" class="navmenu">
+            <ul>
+                <li class="dropdown"><a><span>Home</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                    <ul>
+                    <li><a href="{{ url_for('introduction') }}">Introduction</a></li>
+                        <li><a href="{{ url_for('accreditions.accredition_list') }}">Accreditions</a></li>
+                        <li><a href="{{ url_for('doctors.doctor_list') }}">Doctors</a></li>
+                        <li><a href="{{ url_for('about') }}">About Clinic</a></li>            
+                    </ul>
+                </li>
+                <li class="dropdown"><a><span>Services</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                    <ul>
+                        <li><a href="{{url_for('opdservices.opdservice_list')}}">OPD Services</a></li>
+                        <li><a href="{{url_for('labtests.labtest_list')}}">Lab</a></li>
+                        <li><a href="{{url_for('procedures.procedure_list')}}">Procedures</a></li>
+                        <li><a href="{{ url_for('vaccines.vaccine_list') }}">Vaccines</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a><span>Policies</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                    <ul>
+                        <li><a href="">Policies</a></li>                        
+                    </ul>
+                </li>                     
+            </ul>
+            <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+        </nav>
+
+        <div class="header-social-links">
+            <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a>
+            <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        </div>
+    </div>
+</header>
+    <main>
+        {% block content %}        
+        {% endblock %}        
+    </main>
+    <!-- ======= Vendor JS ======= -->
+    <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/aos/aos.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/glightbox/js/glightbox.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/swiper/swiper-bundle.min.js') }}"></script>
+
+    <!-- Main JS -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

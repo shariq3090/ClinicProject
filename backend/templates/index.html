@@ -1,0 +1,141 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!--<main class="main">-->
+  <section id="hero" class="hero section">
+      <div class="container">
+        <div class="row justify-content-center">
+          <!--<div class="col-lg-6 text-center" data-aos="fade-up" data-aos-delay="100">-->
+          <div class="col-lg-6 text-center">
+            <h2><span>This is</span><span >Grace Clinic</span> A Clinic with highly qualified<span> Doctors from New York City</span></h2>
+            <p>With more than 30 years of experience in the field of medicine, we can help you out in your fight against any disease</p>
+            <a href="{{ url_for('doctors.doctor_list') }}" class="btn-get-started">Book an appointment<br></a>            
+          </div>    
+          <!--</div>-->
+        </div>
+      </div>
+  </section><!-- /Hero Section -->
+<!--</main>-->
+<!--<section id="hero" class="hero section">
+  <div class="container text-center">
+    <h2>Welcome to <span>Grace Clinic</span></h2>    
+    <p>With more than 30 years of experience in the field of medicine, we can help you out in your fight against any disease</p>
+    <a href="#" class="btn btn-primary">Book Appointment</a>
+  </div>
+</section>-->
+<section id="gallery" class="gallery section">
+  <!--<div class="container-fluid" data-aos="fade-up" data-aos-delay="100">-->
+  <div class="container-fluid">
+    <div class="row gy-4 justify-content-center">
+      <div class="col-xl-3 col-lg-4 col-md-6">
+        <div class="gallery-item h-100">
+          <img src="{{ url_for('static', filename='img/gallery/gal-1.jpg') }}" class="img-fluid" alt="Introduction">
+            <div class="gallery-links d-flex align-items-center justify-content-center">
+              <!--<a href="assets/img/gallery/gallery-1.jpg" title="Gallery 1" class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>-->
+              <!--<a href="gallery-single.html" class="details-link"><i class="bi bi-link-45deg"></i></a>-->
+              <a href="{{ url_for('introduction') }}" class="details-link"><i class="bi bi-link-45deg"></i>Introduction</a>
+            </div>
+        </div>
+      </div><!-- End Gallery Item -->
+      
+      <div class="col-xl-3 col-lg-4 col-md-6">
+        <div class="gallery-item h-100">
+          <img src="{{ url_for('static', filename='img/gallery/gal-2.jpg') }}" class="img-fluid" alt="">
+          <div class="gallery-links d-flex align-items-center justify-content-center">
+            <a href="assets/img/gallery/gallery-1.jpg" title="Gallery 1" class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
+            <a href="gallery-single.html" class="details-link"><i class="bi bi-link-45deg"></i></a>
+            <a href="{{ url_for('accreditions.accredition_list') }}" class="details-link"><i class="bi bi-link-45deg"></i>Accreditions</a>
+          </div>
+        </div>
+      </div><!-- End Gallery Item -->
+
+      <div class="col-xl-3 col-lg-4 col-md-6">
+        <div class="gallery-item h-100">
+          <img src="{{ url_for('static', filename='img/gallery/gal-3.jpg') }}" class="img-fluid" alt="">
+          <div class="gallery-links d-flex align-items-center justify-content-center">
+            <a href="assets/img/gallery/gallery-1.jpg" title="Gallery 1" class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
+            <a href="gallery-single.html" class="details-link"><i class="bi bi-link-45deg"></i></a>
+            <a href="{{ url_for('doctors.doctor_list') }}" class="details-link"><i class="bi bi-link-45deg"></i>Doctors</a>
+          </div>
+        </div>
+      </div><!-- End Gallery Item -->  
+      
+      <div class="col-xl-3 col-lg-4 col-md-6">
+        <div class="gallery-item h-100">
+          <img src="{{ url_for('static', filename='img/gallery/gal-4.jpg') }}" class="img-fluid" alt="">
+          <div class="gallery-links d-flex align-items-center justify-content-center">
+            <a href="assets/img/gallery/gallery-1.jpg" title="Gallery 1" class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
+            <!--<a href="gallery-single.html" class="details-link"><i class="bi bi-link-45deg"></i></a>-->
+            <a href="{{ url_for('about') }}" class="details-link"><i class="bi bi-link-45deg"></i>About Clinic</a>
+          </div>
+        </div>
+      </div><!-- End Gallery Item --> 
+
+      <div class="col-xl-3 col-lg-4 col-md-6">
+        <div class="gallery-item h-100">
+          <img src="{{ url_for('static', filename='img/gallery/gal-5.jpg') }}" class="img-fluid" alt="">
+          <div class="gallery-links d-flex align-items-center justify-content-center">
+            <!--<a href="assets/img/gallery/gallery-1.jpg" title="Gallery 1" class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>-->
+            <!--<a href="gallery-single.html" class="details-link"><i class="bi bi-link-45deg"></i></a>-->
+            <a href="{{ url_for('opdservices.opdservice_list') }}" class="details-link"><i class="bi bi-link-45deg"></i>OPD Services</a>
+          </div>
+        </div>
+      </div><!-- End Gallery Item -->
+      
+      <div class="col-xl-3 col-lg-4 col-md-6">
+        <div class="gallery-item h-100">
+          <img src="{{ url_for('static', filename='img/gallery/gal-6.jpg') }}" class="img-fluid" alt="">
+          <div class="gallery-links d-flex align-items-center justify-content-center">
+            <!--<a href="assets/img/gallery/gallery-1.jpg" title="Gallery 1" class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>-->
+            <!--<a href="gallery-single.html" class="details-link"><i class="bi bi-link-45deg"></i></a>-->
+            <a href="{{ url_for('labtests.labtest_list') }}" class="details-link"><i class="bi bi-link-45deg"></i>Lab Tests</a>
+          </div>
+        </div>
+      </div><!-- End Gallery Item -->
+      
+      <div class="col-xl-3 col-lg-4 col-md-6">
+        <div class="gallery-item h-100">
+          <img src="{{ url_for('static', filename='img/gallery/gal-7.jpg') }}" class="img-fluid" alt="">
+          <div class="gallery-links d-flex align-items-center justify-content-center">
+            <!--<a href="assets/img/gallery/gallery-1.jpg" title="Gallery 1" class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>-->
+            <!--<a href="gallery-single.html" class="details-link"><i class="bi bi-link-45deg"></i></a>-->            
+            <a href="{{ url_for('procedures.procedure_list') }}" class="details-link"><i class="bi bi-link-45deg"></i>Procedures</a>
+          </div>
+        </div>
+      </div><!-- End Gallery Item -->  
+
+      <div class="col-xl-3 col-lg-4 col-md-6">
+        <div class="gallery-item h-100">
+          <img src="{{ url_for('static', filename='img/gallery/gal-8.jpg') }}" class="img-fluid" alt="">
+          <div class="gallery-links d-flex align-items-center justify-content-center">
+            <!--<a href="assets/img/gallery/gallery-1.jpg" title="Gallery 1" class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>-->
+            <!--<a href="gallery-single.html" class="details-link"><i class="bi bi-link-45deg"></i></a>-->
+            <a href="{{ url_for('vaccines.vaccine_list') }}" class="details-link"><i class="bi bi-link-45deg"></i>Vaccines</a>
+          </div>
+        </div>
+      </div><!-- End Gallery Item -->       
+  </div>  
+    <!--</div>-->
+</section>
+<footer id="footer" class="footer">
+    <div class="container">
+      <div class="copyright text-center ">
+        <p>© <span>Copyright</span> <strong class="px-1 sitename">PhotoFolio</strong> <span>All Rights Reserved</span></p>
+      </div>
+      <div class="social-links d-flex justify-content-center">
+        <a href=""><i class="bi bi-twitter-x"></i></a>
+        <a href=""><i class="bi bi-facebook"></i></a>
+        <a href=""><i class="bi bi-instagram"></i></a>
+        <a href=""><i class="bi bi-linkedin"></i></a>
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you've purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> Distributed by <a href="https://themewagon.com">ThemeWagon</a>
+      </div>
+    </div>
+  </footer>
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+{% endblock %}
